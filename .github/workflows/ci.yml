@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and start services
+        run: docker compose up -d --build
+
+      - name: Wait for API health
+        run: |
+          for i in {1..30}; do
+            if curl -fsS http://localhost:3100/health > /dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "API did not become healthy in time"
+          docker compose logs
+          exit 1
+
+      - name: Run contract validator
+        run: API_BASE_URL=http://localhost:3100 MONGO_URI=mongodb://localhost:27017 DATABASE_NAME=collab_docs npm run validate:contracts
+
+      - name: Run master test suite
+        run: API_BASE_URL=http://localhost:3100 MONGO_URI=mongodb://localhost:27017 DATABASE_NAME=collab_docs npm run test:master
+
+      - name: Shutdown services
+        if: always()
+        run: docker compose down -v

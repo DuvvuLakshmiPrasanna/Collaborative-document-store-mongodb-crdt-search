@@ -7,7 +7,8 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "migrate:author": "node scripts/migrate_author_schema.js",
-    "validate:contracts": "node scripts/validate_contracts.js"
+    "validate:contracts": "node scripts/validate_contracts.js",
+    "test:master": "node scripts/master_test_suite.js"
   },
   "keywords": [
     "mongodb",
