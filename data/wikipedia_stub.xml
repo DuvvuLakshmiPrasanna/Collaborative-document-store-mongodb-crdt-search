@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mediawiki>
+  <page>
+    <title>MongoDB Basics</title>
+    <revision><text>MongoDB stores data as BSON documents and supports horizontal scaling.</text></revision>
+  </page>
+  <page>
+    <title>Optimistic Concurrency Control</title>
+    <revision><text>OCC uses version checks to prevent lost updates in collaborative systems.</text></revision>
+  </page>
+  <page>
+    <title>Full Text Search</title>
+    <revision><text>Text indexes let you query titles and content with ranked relevance scores.</text></revision>
+  </page>
+  <page>
+    <title>Aggregation Pipelines</title>
+    <revision><text>Aggregation pipelines transform and analyze document data at scale.</text></revision>
+  </page>
+  <page>
+    <title>Schema Evolution</title>
+    <revision><text>Applications evolve by supporting old and new schema formats during migration.</text></revision>
+  </page>
+  <page>
+    <title>Document Versioning</title>
+    <revision><text>Version numbers support conflict detection in collaborative editing workflows.</text></revision>
+  </page>
+  <page>
+    <title>Tag Cooccurrence Analysis</title>
+    <revision><text>Tag pair frequency can reveal related topics in content collections.</text></revision>
+  </page>
+  <page>
+    <title>Dockerized Backends</title>
+    <revision><text>Docker and Compose make backend services reproducible in local and CI runs.</text></revision>
+  </page>
+  <page>
+    <title>REST API Design</title>
+    <revision><text>Resource-oriented endpoints improve consistency and maintainability.</text></revision>
+  </page>
+  <page>
+    <title>Collaborative Wiki Systems</title>
+    <revision><text>Collaborative platforms need concurrency control, history, and search.</text></revision>
+  </page>
+</mediawiki>

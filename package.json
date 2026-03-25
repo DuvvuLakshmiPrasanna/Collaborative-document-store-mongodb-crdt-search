@@ -1,0 +1,26 @@
+{
+  "name": "collaborative-document-store-mongodb-crdt-search",
+  "version": "1.0.0",
+  "description": "Collaborative document store backend with MongoDB OCC, full-text search, analytics, and schema migration",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "migrate:author": "node scripts/migrate_author_schema.js",
+    "validate:contracts": "node scripts/validate_contracts.js"
+  },
+  "keywords": [
+    "mongodb",
+    "express",
+    "occ",
+    "search",
+    "analytics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0"
+  }
+}
