@@ -1,8 +1,6 @@
-FROM node:20-alpine
+FROM node:20
 
 WORKDIR /app
-
-RUN apk add --no-cache ca-certificates
 
 COPY package*.json ./
 RUN npm ci --omit=dev
@@ -11,8 +9,4 @@ COPY src ./src
 COPY scripts ./scripts
 COPY data ./data
 
-ENV NODE_ENV=production
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+CMD ["node", "src/server.js"]
