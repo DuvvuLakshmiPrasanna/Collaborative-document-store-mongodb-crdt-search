@@ -308,9 +308,9 @@ app.get("/api/analytics/tag-cooccurrence", async (_req, res) => {
 });
 
 async function start() {
-  // eslint-disable-next-line no-console
-  console.log("MONGO_URI:", process.env.MONGO_URI);
   await connectDb();
+  // eslint-disable-next-line no-console
+  console.log("MongoDB connected successfully");
   const seedResult = await seedDocumentsIfNeeded();
   if (seedResult.seeded) {
     // eslint-disable-next-line no-console
