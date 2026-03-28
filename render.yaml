@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: collaborative-document-store-api
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: DATABASE_NAME
+        value: documesh
+      - key: SEED_COUNT
+        value: 10000
+      - key: SEED_BATCH_SIZE
+        value: 1000
+      - key: MONGO_URI
+        sync: false

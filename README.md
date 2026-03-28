@@ -163,6 +163,72 @@ npm start
 
 Use a running MongoDB instance and set `MONGO_URI` and `DATABASE_NAME`.
 
+## Deploy to Render + MongoDB Atlas (Fastest Path)
+
+This project is ready to deploy as a Docker web service on Render.
+
+### 1. Set up MongoDB Atlas
+
+1. Create a free cluster.
+2. Create a database user.
+3. In Network Access, allow `0.0.0.0/0` for development/testing.
+4. Copy your connection string and replace `<username>`, `<password>`, and `<cluster>`.
+
+Example:
+
+```bash
+mongodb+srv://username:password@cluster.mongodb.net/
+```
+
+### 2. Push repository to GitHub
+
+```bash
+git add .
+git commit -m "deploy: render + atlas ready"
+git push origin main
+```
+
+### 3. Deploy on Render
+
+Option A (UI):
+
+1. Render -> New -> Web Service
+2. Connect this GitHub repository
+3. Use:
+
+- Environment: `Docker`
+- Branch: `main`
+- Root Directory: leave empty
+
+4. Add environment variables:
+
+```env
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/
+DATABASE_NAME=documesh
+PORT=3000
+SEED_COUNT=10000
+SEED_BATCH_SIZE=1000
+MIGRATION_BATCH_SIZE=1000
+```
+
+Option B (Blueprint):
+
+Use `render.yaml` in this repository and set the secret `MONGO_URI` when prompted.
+
+### 4. Verify deployment
+
+Open:
+
+```bash
+https://<your-service>.onrender.com/health
+```
+
+Expected response:
+
+```json
+{ "ok": true }
+```
+
 ## Seeding Strategy
 
 On startup, the API:
